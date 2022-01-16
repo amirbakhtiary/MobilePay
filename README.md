@@ -3,14 +3,26 @@ Fee Calculation Service
 
 
 ## Description
+Whenever a customer purchases a product using MobilePay, the merchants have to pay a small fee to MobilePay
 
+Rules for fee calculation
+- All merchants should be charged 1% of the transaction amount.
+- Tesla should get 25% discount
+- Rema1000 should get 15% discount
+- McDonald should get 5% discount
+- Transactions made during the weekend (Saturday & Sunday) are free.
+- If a merchant has more than 10 transactions in 1 month, they get additional 20% volume discount
+
+There is a transaction entity intended to store information about all merchant transactions in order to implement this assignment.
+Transactions can be called single or multiple as you mentioned in the instruction.
+Merchants and fee settings are dynamic and can be adjusted as needed. For calculating fees, I implemented two fetch models. 1- Fetching all transactions and calculating fees in the application. 2- Fetching based on weekdays, months, and years, and calculating the fee and discounts.
 
 This project implement with clean architecture and DDD approach.
 Project Structure:
 - MobilePay.Core.Domain: inculding aggregate root and all domain and common classes.
 - MobilePay.Infrastructures.Data: repository, queries, and Db context by configuration of every entity.
 - MobilePay.Core.ApplicationService: all services define at this layer. 
-- Framework.Tools: all class share between every layer.
+- Framework.Tools: all method and extention share between layers.
 - MobilePay.Endpoints.WebApi: Endpoint API and app service configuration.
 - Test: In this Project I covered most of important tests like `Unit Testing`, `Integration Testing` at separate projects based on the functionality
 
