@@ -25,13 +25,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{D085C7D0-4605-4603-AFD3-D7A1B0A040A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Tools", "src\BuildingBlocks\Tools\Framework.Tools\Framework.Tools.csproj", "{90CF1787-C778-4392-A164-E869493F61ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Tools", "src\BuildingBlocks\Tools\Framework.Tools\Framework.Tools.csproj", "{90CF1787-C778-4392-A164-E869493F61ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.MobilePay.Domain", "test\Test.MobilePay.Domain\Test.MobilePay.Domain.csproj", "{11ECFA14-10E6-486B-A1EB-FA2B0FBF9D4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.MobilePay.Domain", "test\Test.MobilePay.Domain\Test.MobilePay.Domain.csproj", "{11ECFA14-10E6-486B-A1EB-FA2B0FBF9D4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.MobilePay.Infrastructure", "test\Test.MobilePay.Infrastructure\Test.MobilePay.Infrastructure.csproj", "{93D2E048-3C99-49D2-8988-36904C28B468}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.MobilePay.Infrastructure", "test\Test.MobilePay.Infrastructure\Test.MobilePay.Infrastructure.csproj", "{93D2E048-3C99-49D2-8988-36904C28B468}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.MobilePay.WebApi", "test\Test.MobilePay.WebApi\Test.MobilePay.WebApi.csproj", "{7D59E809-4019-4BE2-A1F6-2BF02AB9A7A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.MobilePay.WebApi", "test\Test.MobilePay.WebApi\Test.MobilePay.WebApi.csproj", "{7D59E809-4019-4BE2-A1F6-2BF02AB9A7A4}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{CE160994-CDF2-4A6B-8FF0-E52149ED81E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{7D59E809-4019-4BE2-A1F6-2BF02AB9A7A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D59E809-4019-4BE2-A1F6-2BF02AB9A7A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D59E809-4019-4BE2-A1F6-2BF02AB9A7A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE160994-CDF2-4A6B-8FF0-E52149ED81E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE160994-CDF2-4A6B-8FF0-E52149ED81E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE160994-CDF2-4A6B-8FF0-E52149ED81E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE160994-CDF2-4A6B-8FF0-E52149ED81E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

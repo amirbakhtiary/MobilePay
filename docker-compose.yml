@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+  mobilepayapi:
+    image: ${DOCKER_REGISTRY-}mobilepayapi
+    links:
+      - sqlserver
+    build:
+      context: .
+      dockerfile: src/Endpoints/MobilePay.Endpoints.WebApi/Dockerfile
+    ports:
+      - "8090:80"
+    depends_on:
+      - sqlserver
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    hostname: 'sqlserver'
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "P@ssw0rd"
+    volumes:
+      - ./data/mssql:/var/opt/mssql3
+    ports:
+      - '1733:1433'
+    expose:
+      - 1733
