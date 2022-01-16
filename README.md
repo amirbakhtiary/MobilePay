@@ -77,7 +77,7 @@ You should be able to make requests to `localhost:8090` for the API project once
 
 ## Test
 - For every unit function implement unit test and all functionality tested.
-- All of the API functionality tested by the Postman Integration test.
+- All of the API functionality tested by the Postman Integration test as well as webapi test.
 
 ## Usage
 Framework and Technologies
