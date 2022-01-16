@@ -1,0 +1,16 @@
+{
+  "Merchants": [
+    {
+      "Name": "Tesla",
+      "Discount": 25
+    },
+    {
+      "Name": "Rema1000",
+      "Discount": 15
+    },
+    {
+      "Name": "McDonald",
+      "Discount": 5
+    }
+  ]
+}
