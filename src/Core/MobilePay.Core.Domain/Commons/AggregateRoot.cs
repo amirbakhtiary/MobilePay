@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace MobilePay.Core.Domain.Commons;
+﻿namespace MobilePay.Core.Domain.Commons;
 
 public abstract class AggregateRoot : IInternalEventHandler
 {

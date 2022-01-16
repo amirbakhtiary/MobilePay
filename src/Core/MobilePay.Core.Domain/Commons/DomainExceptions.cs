@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace MobilePay.Core.Domain.Commons;
+﻿namespace MobilePay.Core.Domain.Commons;
 
 public static class DomainExceptions
 {

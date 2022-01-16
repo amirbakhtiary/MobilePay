@@ -1,8 +1,8 @@
 version: '3.4'
 
 services:
-  mobilepayapi:
-    image: ${DOCKER_REGISTRY-}mobilepayapi
+  mobilepay.endpoints.webapi:
+    image: ${DOCKER_REGISTRY-}mobilepayendpointswebapi
     links:
       - sqlserver
     build:

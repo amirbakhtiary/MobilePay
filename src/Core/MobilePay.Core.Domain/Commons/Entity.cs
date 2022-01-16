@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MobilePay.Core.Domain.Commons;
+﻿namespace MobilePay.Core.Domain.Commons;
 
 public abstract class Entity<TId> : IInternalEventHandler
 {
