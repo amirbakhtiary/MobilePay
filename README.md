@@ -15,7 +15,9 @@ Rules for fee calculation
 
 There is a transaction entity intended to store information about all merchant transactions in order to implement this assignment.
 Transactions can be called single or multiple as you mentioned in the instruction.
-Merchants and fee settings are dynamic and can be adjusted as needed. For calculating fees, I implemented two fetch models. 1- Fetching all transactions and calculating fees in the application. 2- Fetching based on weekdays, months, and years, and calculating the fee and discounts.
+Merchants and fee settings are dynamic and can be adjusted as needed. For calculating fees, I implemented two fetch models. 
+1- Fetching all transactions and calculating fees in the application.(Set the CalculationMethod to false in FeeSetting config to use this method) 
+2- Fetching based on weekdays, months, and years, and calculating the fee and discounts.(Default method - Set the CalculationMethod to true in FeeSetting config to use this method) 
 
 This project implement with clean architecture and DDD approach.
 Project Structure:
