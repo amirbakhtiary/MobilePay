@@ -25,21 +25,45 @@ public class TransactionRepository : ITransactionRepository
 
     public async Task<List<Transaction>> GetAllAsync(string merchantName,
         CancellationToken cancellationToken = default) =>
+        _dbContext.Database.IsRelational() ?
         await _dbContext.Transactions
-        .Where(t => IsEqual(t.MerchantName.Value, merchantName))
+        .Where(t => t.MerchantName.Value.Equals(merchantName))
+        .AsNoTracking()
+        .ToListAsync(cancellationToken) :
+         await _dbContext.Transactions
+        .Where(t => t.MerchantName.Value.Equals(merchantName, StringComparison.OrdinalIgnoreCase))
         .AsNoTracking()
         .ToListAsync(cancellationToken);
 
     public async Task<List<DayOfWeekTransactions>> GetDayOfWeekAsync(string merchantName,
         CancellationToken cancellationToken = default) =>
+        _dbContext.Database.IsRelational() ?
         await _dbContext.Transactions
-        .Where(t => IsEqual(t.MerchantName.Value, merchantName))
+        .Where(t => t.MerchantName.Value.Equals(merchantName))
         .AsNoTracking()
         .GroupBy(t => new
         {
             Year = t.Timestamp.Year,
             Month = t.Timestamp.Month,
-            DayOfWeek = GetDayOfWeek(t.Timestamp)
+            DayOfWeek = EF.Functions.DateDiffDay(new DateTime(1753, 1, 7), t.Timestamp) % 7
+        })
+        .Select(g => new DayOfWeekTransactions
+        {
+            Year = g.Key.Year,
+            Month = g.Key.Month,
+            DayOfWeek = g.Key.DayOfWeek,
+            TotalCount = g.Count(),
+            TotalAmount = g.Sum(t => t.Amount)
+        })
+        .ToListAsync(cancellationToken) :
+        await _dbContext.Transactions
+        .Where(t => t.MerchantName.Value.Equals(merchantName, StringComparison.OrdinalIgnoreCase))
+        .AsNoTracking()
+        .GroupBy(t => new
+        {
+            Year = t.Timestamp.Year,
+            Month = t.Timestamp.Month,
+            DayOfWeek = (int)t.Timestamp.DayOfWeek
         })
         .Select(g => new DayOfWeekTransactions
         {
@@ -50,13 +74,5 @@ public class TransactionRepository : ITransactionRepository
             TotalAmount = g.Sum(t => t.Amount)
         })
         .ToListAsync(cancellationToken);
-
-    private int GetDayOfWeek(DateTime dateTime) =>
-        _dbContext.Database.IsRelational() ?
-        EF.Functions.DateDiffDay(new DateTime(1753, 1, 7), dateTime) % 7 : (int)dateTime.DayOfWeek;
-
-    private bool IsEqual(string val1, string val2) =>
-         _dbContext.Database.IsRelational() ? val1.ToLower() == val2.ToLower() :
-        val1.Equals(val2, StringComparison.OrdinalIgnoreCase);
 
 }

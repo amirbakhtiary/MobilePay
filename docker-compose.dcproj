@@ -6,7 +6,7 @@
     <ProjectGuid>ce160994-cdf2-4a6b-8ff0-e52149ed81e1</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>mobilepay.endpoints.webapi</DockerServiceName>
+    <DockerServiceName>mobilepayapi</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">
