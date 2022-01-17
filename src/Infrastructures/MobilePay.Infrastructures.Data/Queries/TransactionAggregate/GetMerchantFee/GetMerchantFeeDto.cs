@@ -4,5 +4,9 @@ namespace MobilePay.Infrastructures.Data.Queries.TransactionAggregate.GetMerchan
 
 public class GetMerchantFeeDto
 {
+    public GetMerchantFeeDto(decimal totalFee)
+    {
+        TotalFee = totalFee;
+    }
     public decimal TotalFee { get; set; }
 }

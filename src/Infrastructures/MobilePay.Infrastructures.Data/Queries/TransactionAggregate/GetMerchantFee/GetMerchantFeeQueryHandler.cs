@@ -18,21 +18,11 @@ public class GetMerchantFeeQueryHandler : IRequestHandler<GetMerchantFeeQuery, G
     {
         Merchant merchant = request.Merchants.GetMerchant(request.MerchantName);
         var setting = new FeeSettingDto { Merchant = merchant, FeeSetting = request.FeeSetting };
-        decimal result;
-        if (request.FeeSetting.CalculationMethod)
-        {
-            var dayOfWeekTransactions = await _transactionRepository.GetDayOfWeekAsync(request.MerchantName, cancellationToken);
-            result = Transaction.CalculateMerchantFee(setting, dayOfWeekTransactions);
-        }
-        else
-        {
-            var transactions = await _transactionRepository.GetAllAsync(request.MerchantName, cancellationToken);
-            result = Transaction.CalculateMerchantFee(setting, transactions);
-        }
 
-        return new GetMerchantFeeDto
-        {
-            TotalFee = result
-        };
+        return new GetMerchantFeeDto(request.FeeSetting.CalculationMethod ?
+            Transaction.CalculateMerchantFee(setting, await _transactionRepository
+                .GetDayOfWeekAsync(request.MerchantName, cancellationToken)) :
+            Transaction.CalculateMerchantFee(setting, _transactionRepository
+                .GetMerchantTransactionsAsync(request.MerchantName, cancellationToken)));
     }
 }

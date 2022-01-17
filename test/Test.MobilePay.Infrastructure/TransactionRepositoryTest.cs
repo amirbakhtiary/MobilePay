@@ -52,9 +52,9 @@ public class TransactionRepositoryTest : DatabaseTestBase
     }
 
     [Fact]
-    public async void Transaction_GetTransanctions()
+    public void Transaction_GetTransanctions()
     {
-        var result = await _testee.GetAllAsync("tesla");
+        var result = _testee.GetMerchantTransactionsAsync("tesla");
 
         Assert.Equal(4, result.Count());
     }

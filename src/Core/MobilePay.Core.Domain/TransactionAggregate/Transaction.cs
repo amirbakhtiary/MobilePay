@@ -21,17 +21,12 @@ public class Transaction : AggregateRoot
             Timestamp = o.Timestamp,
         });
     public static decimal CalculateMerchantFee(FeeSettingDto setting,
-        IEnumerable<Transaction> transactions)
-    {
-        var monthlyTransactions = MonthlyFeesExceptWeekend(transactions);
-        return CalculateMerchantFee(setting, monthlyTransactions);
-    }
+        IEnumerable<Transaction> transactions) =>
+        CalculateMerchantFee(setting, MonthlyFeesExceptWeekend(transactions));
+
     public static decimal CalculateMerchantFee(FeeSettingDto setting,
-        IEnumerable<DayOfWeekTransactions> dayOfWeekTransactions)
-    {
-        var monthlyTransactions = MonthlyFeesExceptWeekend(dayOfWeekTransactions);
-        return CalculateMerchantFee(setting, monthlyTransactions);
-    }
+        IEnumerable<DayOfWeekTransactions> dayOfWeekTransactions) =>
+        CalculateMerchantFee(setting, MonthlyFeesExceptWeekend(dayOfWeekTransactions));
 
     private static decimal CalculateMerchantFee(FeeSettingDto setting,
         IEnumerable<MonthlyTransactions> monthlyTransactions)
